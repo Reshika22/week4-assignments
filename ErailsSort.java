@@ -1,20 +1,16 @@
 package week4.day1;
 
 import java.util.ArrayList;
-import java.util.LinkedHashSet;
+import java.util.Collections;
 import java.util.List;
-import java.util.Set;
-
-
 import org.openqa.selenium.By;
-
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 
 import selenium.SeleniumHelper;
 
-public class Erails {
+public class ErailsSort {
 
 	public static void main(String[] args) throws InterruptedException {
 
@@ -37,20 +33,10 @@ public class Erails {
 			String trainName = driver.findElement(By.xpath("//table[@class='DataTable TrainList TrainListHeader']//tr["+i+"]/td[2]")).getText();
 			//System.out.println(trainNames);
 			trainNames.add(trainName);
-
+			
 		}
-		Set<String> trainNamesCopy = new LinkedHashSet<String>(trainNames);
-
-		//System.out.println(trainNames);
-		System.out.println(trainNames.size());
-		System.out.println(trainNamesCopy.size());
-		if(trainNames.size()==trainNamesCopy.size()) {
-			System.out.println("No Duplicate Train Names");
-		}
-		else
-		{
-			System.out.println("Duplicate Train Names present");
-		}
+		Collections.sort(trainNames);
+		System.out.println("Sorted Train Names : "+trainNames);
 		driver.close();
 	}
 }
